@@ -38,16 +38,16 @@ const Message: React.FC<Props> = ({
 }) => {
     const moreItems: ItemType[] = [
         {
-            label: "复制",
+            label: "copy",
             key: "copy",
             icon: <CopyOutlined />,
             onClick: async () => {
                 await copyToClipboard(text || "");
-                message.success(isImage ? "图片链接已复制到剪切板" : "复制成功");
+                message.success(isImage ? "Image link copied to clipboard" : "Copied successfully");
             },
         },
         {
-            label: "删除",
+            label: "delete",
             key: "delete",
             icon: <DeleteOutlined />,
             onClick: onDelete,
@@ -58,21 +58,21 @@ const Message: React.FC<Props> = ({
     if (isMidjourney && images?.length) {
         moreItems.unshift(
             {
-                label: "放大",
+                label: "enlarge",
                 key: "upscale",
                 icon: <FullscreenOutlined />,
                 children: [1, 2, 3, 4].map((i) => ({
-                    label: `图${i}`,
+                    label: `picture${i}`,
                     key: `upscale-${i}`,
                     onClick: () => onOperate?.("upscale", i),
                 })),
             },
             {
-                label: "变换",
+                label: "transform",
                 key: "variation",
                 icon: <BlockOutlined />,
                 children: [1, 2, 3, 4].map((i) => ({
-                    label: `图${i}`,
+                    label: `picture${i}`,
                     key: `variation-${i}`,
                     onClick: () => onOperate?.("variation", i),
                 })),

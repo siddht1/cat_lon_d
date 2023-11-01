@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     <Component {...pageProps} />
                     <Script
                         async
-                        src="https://chatalpha-umami.zeabur.app/script.js"
+                        src=""
                         data-website-id="ecbe897f-e1ef-4e3e-8179-cc3bb9a5944c"
                     />
                 </UserStoreProvider>

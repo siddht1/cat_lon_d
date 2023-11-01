@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     logger.info("logout", req.url, req.body);
 
-    const data = await sendResponse({ status: "success", message: "登出成功" });
+    const data = await sendResponse({ status: "success", message: "Logout successful" });
     res.write(JSON.stringify(data));
     res.end();
 

@@ -20,7 +20,7 @@ export default dynamic(
                             const icon = buttonRef.current
                                 ?.querySelector(".anticon")
                                 ?.getAttribute("aria-label");
-                            window.umami.track(name || icon || "未知的按钮", {
+                            window.umami.track(name || icon || "unknown", {
                                 email: userInfo.email,
                                 nickName: userInfo.nickName,
                             });

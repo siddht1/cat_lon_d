@@ -14,21 +14,21 @@ const Setting: React.FC<Props> = ({ open, notice, onCancel }) => {
 
     return (
         <Modal
-            // title="设置"
+            // title="set up"
             open={open}
             onCancel={onCancel}
             maskClosable={false}
-            cancelText="取消"
-            okText="保存"
+            cancelText="Cancel"
+            okText="keep"
             footer={null}
             width={800}
             bodyStyle={isMobile ? {} : { padding: "10px 20px 0 0" }}
         >
             {/* <Tabs destroyInactiveTabPane tabPosition={isMobile ? "top" : "left"}>
-                <Tabs.TabPane tab="基本信息" key="1">
+                <Tabs.TabPane tab="Basic Information" key="1">
                     <BasicInfo notice={notice} />
                 </Tabs.TabPane>
-                <Tabs.TabPane tab="购买套餐" key="2">
+                <Tabs.TabPane tab="Buy a package" key="2">
                     <Billing />
                 </Tabs.TabPane>
             </Tabs> */}

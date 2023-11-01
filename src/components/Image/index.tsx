@@ -21,7 +21,7 @@ const MyImage: React.FC<Props> = ({ loading, urls, onRegenerate }) => {
     return (
         <Spin
             wrapperClassName={classNames("w-80", "rounded-md", "p-2", "bg-slate-100")}
-            tip="正在努力生成图片中..."
+            tip="Working on generating pictures..."
             spinning={loading}
             size="large"
         >
@@ -48,9 +48,9 @@ const MyImage: React.FC<Props> = ({ loading, urls, onRegenerate }) => {
                     <div className="flex-1 flex items-center justify-center flex-col h-60">
                         {!loading && (
                             <>
-                                <p className="mt-4 text-gray-500">图片加载失败(＞﹏＜)</p>
+                                <p className="mt-4 text-gray-500">Image loading failed(＞﹏＜)</p>
                                 <Button type="link" onClick={onRegenerate}>
-                                    重试
+                                    Retry
                                 </Button>
                             </>
                         )}

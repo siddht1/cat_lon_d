@@ -88,9 +88,9 @@ const History: React.FC<Props> = ({ uuid, title }) => {
                             </span>
                             {history.length !== 1 && (
                                 <Popconfirm
-                                    title="确定删除此记录？"
-                                    cancelText="取消"
-                                    okText="确认"
+                                    title="Confirm to delete this record？"
+                                    cancelText="Cancel"
+                                    okText="confirm"
                                     onConfirm={onDelete}
                                 >
                                     <span

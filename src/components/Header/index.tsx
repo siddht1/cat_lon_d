@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({ title, scrollToTop }) => {
 
     const onChangeContext = () => {
         setData({ hasContext: !hasContext });
-        message.success("当前会话已" + (hasContext ? "关闭" : "开启") + "上下文");
+        message.success("The current session has" + (hasContext ? "closure" : "turn on") + "context");
     };
 
     const onDownload = () => {

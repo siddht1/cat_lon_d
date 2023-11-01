@@ -32,10 +32,10 @@ const ChatContent = () => {
 
     const onOperateMidjourney = (type: string, index: number, taskId?: string) => {
         if (!taskId) {
-            return message.error("当前任务ID不存在");
+            return message.error("The current task ID does not exist");
         }
 
-        const text = (type === "upscale" ? "放大" : "变换") + `图${index}`;
+        const text = (type === "upscale" ? "enlarge" : "transform") + `picture${index}`;
         addChat(uuid, {
             dateTime: new Date().toLocaleString(),
             text,
@@ -101,7 +101,7 @@ const ChatContent = () => {
                                     <div className="sticky bottom-0 left-0 flex justify-center">
                                         <Button type="primary" onClick={() => setResponding(false)}>
                                             <PauseCircleFilled />
-                                            停止对话
+                                            Stop conversation
                                         </Button>
                                     </div>
                                 )}

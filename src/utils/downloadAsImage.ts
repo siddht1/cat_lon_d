@@ -2,7 +2,7 @@ import { message } from "antd";
 import domToImage from "dom-to-image";
 
 const downloadAsImage = async (dom: HTMLElement, title: string) => {
-    message.loading("处理中...", 1);
+    message.loading("Processing...", 1);
     try {
         const scale = window.devicePixelRatio * 2 || 2;
         const { scrollWidth: width, scrollHeight: height } = dom;
@@ -21,7 +21,7 @@ const downloadAsImage = async (dom: HTMLElement, title: string) => {
         link.href = data;
         link.click();
     } catch (error: any) {
-        message.error(`下载失败: ${error?.message}`);
+        message.error(`download failed: ${error?.message}`);
     }
 };
 

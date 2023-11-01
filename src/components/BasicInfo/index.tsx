@@ -29,9 +29,9 @@ const BasicInfo: React.FC<Props> = ({ notice }) => {
         const url = location.origin + "/login?code=" + userInfo.inviteCode;
         try {
             await copyToClipboard(url);
-            message.success("复制成功");
+            message.success("Copied successfully");
         } catch (error) {
-            message.error("复制失败");
+            message.error("Copy failed");
         }
     };
 
@@ -64,22 +64,22 @@ const BasicInfo: React.FC<Props> = ({ notice }) => {
             )}
             <Row align="middle" gutter={[16, 16]}>
                 <Col span={leftSpan}>
-                    <label>邮箱账号：</label>
+                    <label>email address：</label>
                 </Col>
                 <Col span={24 - leftSpan}>
                     <span>{userInfo.email}</span>
                 </Col>
                 <Col span={leftSpan}>
-                    <label>邀请码：</label>
+                    <label>Invitation code：</label>
                 </Col>
                 <Col span={24 - leftSpan}>
                     <span>{userInfo.inviteCode}</span>
                     <Button type="link" onClick={onCopyInviteUrl}>
-                        复制邀请链接
+                        Copy invitation link
                     </Button>
                 </Col>
                 <Col span={leftSpan}>
-                    <label>剩余积分：</label>
+                    <label>remaining points：</label>
                 </Col>
                 <Col span={24 - leftSpan}>
                     <span>{userInfo.integral}</span>
@@ -88,24 +88,24 @@ const BasicInfo: React.FC<Props> = ({ notice }) => {
                         title={
                             <Input
                                 value={rechargeCode}
-                                placeholder="请输入充值密钥"
+                                placeholder="Please enter the recharge key"
                                 onChange={(e) => setChargeCode(e.target.value)}
                             />
                         }
                         open={rechargeOpen}
-                        cancelText="取消"
-                        okText="确认"
+                        cancelText="Cancel"
+                        okText="confirm"
                         onConfirm={onReCharge}
                         onCancel={() => setRechargeOpen(false)}
                         okButtonProps={{ loading: rechargeLoading }}
                     >
                         <Button type="link" onClick={() => setRechargeOpen(!rechargeOpen)}>
-                            增加积分
+                           increase points
                         </Button>
                     </Popconfirm>
                 </Col>
                 <Col span={24} className="flex justify-center">
-                    <Button onClick={onLogout}>退出登录</Button>
+                    <Button onClick={onLogout}>sign out</Button>
                 </Col>
             </Row>
         </div>

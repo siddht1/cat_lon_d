@@ -100,7 +100,7 @@ const useChatProgress = (responding: boolean, setResponding: (e: boolean) => voi
                 return;
             }
 
-            const errorMessage = error?.message ?? "好像出错误了，请稍后再试";
+            const errorMessage = error?.message ?? "There seems to be an error, please try again later.";
             updateChat(uuid, index, {
                 dateTime: new Date().toLocaleString(),
                 text: errorMessage,

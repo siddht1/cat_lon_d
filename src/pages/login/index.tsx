@@ -36,7 +36,7 @@ const Login = () => {
         setLoading(true);
         try {
             await http[isRegister ? "register" : "login"](info);
-            message.success(isRegister ? "注册成功" : "登录成功" + "，即将跳转...");
+            message.success(isRegister ? "registration success" : "login successful" + "，Redirecting ...");
             router.push("/");
         } catch (error) {
             console.error(error);
@@ -84,7 +84,7 @@ const Login = () => {
                     "backdrop-filter backdrop-blur-sm"
                 )}
             >
-                {/* <h2 className="text-center text-3xl font-extrabold text-gray-900">登录</h2> */}
+                {/* <h2 className="text-center text-3xl font-extrabold text-gray-900">Log in</h2> */}
                 <Image
                     className="m-auto block bg-[#3050fb] p-3 rounded-xl"
                     width={64}
@@ -96,27 +96,27 @@ const Login = () => {
                     <Form.Item
                         name="email"
                         rules={[
-                            { required: true, message: "邮箱地址为空" },
-                            { type: "email", message: "邮箱地址格式错误" },
+                            { required: true, message: "Email address is empty" },
+                            { type: "email", message: "Email address format error" },
                         ]}
                     >
-                        <Input placeholder="请输入邮箱地址" className="rounded text-sm pt-2 pb-2" />
+                        <Input placeholder="Please input the email address" className="rounded text-sm pt-2 pb-2" />
                     </Form.Item>
 
                     <Form.Item
                         name="password"
                         className={classNames(!isRegister && "mb-2")}
                         rules={[
-                            { required: true, message: "密码为空" },
+                            { required: true, message: "Password is empty" },
                             {
                                 min: 8,
                                 pattern: /^(?=.*[0-9])(?=.*[a-zA-Z])[A-Za-z0-9]+$/,
-                                message: "密码应为8位以上数字和字母",
+                                message: "Password should be more than 8 numbers and letters",
                             },
                         ]}
                     >
                         <Input.Password
-                            placeholder="请输入密码"
+                            placeholder="Please enter password"
                             className="rounded text-sm pt-2 pb-2"
                         />
                     </Form.Item>
@@ -125,7 +125,7 @@ const Login = () => {
                         <>
                             <Form.Item name="inviteCode">
                                 <Input
-                                    placeholder="请输入6位邀请码，可为空"
+                                    placeholder="Please enter the 6-digit invitation code, which can be empty"
                                     className="rounded text-sm pt-2 pb-2"
                                 />
                             </Form.Item>
@@ -133,10 +133,10 @@ const Login = () => {
                                 <Form.Item
                                     name="code"
                                     className="mb-0 mr-2 flex-1"
-                                    rules={[{ required: true, message: "密码为空" }]}
+                                    rules={[{ required: true, message: "Password is empty" }]}
                                 >
                                     <Input
-                                        placeholder="邮箱验证码"
+                                        placeholder="E-mail verification code"
                                         className="rounded text-sm pt-2 pb-2"
                                     />
                                 </Form.Item>
@@ -146,7 +146,7 @@ const Login = () => {
                                     loading={codeLoading}
                                     disabled={!!countdown}
                                 >
-                                    {countdown ? `重发（${countdown}秒）` : "发送验证码"}
+                                    {countdown ? `Resend（${countdown}Second）` : "Send the verification code"}
                                 </Button>
                             </div>
                         </>
@@ -158,7 +158,7 @@ const Login = () => {
                             type="link"
                             onClick={() => setIsRegister(!isRegister)}
                         >
-                            {isRegister ? "返回登录" : "注册新账号"}
+                            {isRegister ? "Return to login" : "Register a new account"}
                         </Button>
                     </Form.Item>
 
@@ -170,7 +170,7 @@ const Login = () => {
                             htmlType="submit"
                             loading={loading}
                         >
-                            {isRegister ? "注册" : "登录"}
+                            {isRegister ? "register" : "log in"}
                         </Button>
                     </Form.Item>
                 </Form>

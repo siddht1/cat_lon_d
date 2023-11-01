@@ -23,12 +23,12 @@ export const UserStore = createContext<userStoreInterface>({} as userStoreInterf
 const User: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [userInfo, setUserInfo] = useState({
         avatar: "/author.jpg",
-        name: "helianthuswhite",
+        name: "KIVTECHS",
         email: "",
         integral: 0,
         inviteCode: "",
         description:
-            'Star on <a href="https://github.com/helianthuswhite/chatgpt-web-next" class="color-[#3050fb]" target="_blank" >Github</a>',
+            '',
     });
 
     const refreshUserInfo = async () => {

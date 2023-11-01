@@ -25,7 +25,7 @@ export interface ChargeType {
 }
 
 export interface OrderParams {
-    payType: "alipay";
+    payType: "stripe";
     productType: 1 | 2 | 3;
 }
 
@@ -43,8 +43,8 @@ export enum OrderStatus {
 
 const PayTip = {
     [OrderStatus.NULL]: "",
-    [OrderStatus.toPay]: "检测到您还未扫码，请尽快完成支付",
-    [OrderStatus.cancelled]: "检查到您已取消支付，请重新扫码",
+    [OrderStatus.toPay]: "It is detected that you have not scanned the QR code, please complete the payment as soon as possible",
+    [OrderStatus.cancelled]: "Checked that you have canceled the payment, please scan the code again",
 };
 
 const BasicInfo: React.FC = () => {
@@ -56,26 +56,26 @@ const BasicInfo: React.FC = () => {
     const [orderInfo, setOrderInfo] = useState<OrderResult | null>(null);
     const charges: ChargeType[] = [
         {
-            name: "基础版",
+            name: "Basic version",
             price: 10,
             type: 1,
             count: 100,
-            descs: ["文本模式支持最大4000tokens", "优先体验新功能"],
+            descs: ["Text mode supports up to 4000 tokens", "Priority to experience new features"],
         },
         {
-            name: "高级版",
+            name: "Premium version",
             price: 30,
             type: 2,
             hot: true,
             count: 500,
-            descs: ["文本模式支持最大4000tokens", "优先体验新功能"],
+            descs: ["Text mode supports up to 4000 tokens", "Priority to experience new features"],
         },
         {
-            name: "尊享版",
+            name: "Exclusive edition",
             price: 100,
             type: 3,
             count: 2000,
-            descs: ["文本模式支持最大4000tokens", "优先体验新功能"],
+            descs: ["Text mode supports up to 4000 tokens", "Priority to experience new features"],
         },
     ];
     const Wrapper = isMobile ? Scrollbar : "div";
@@ -84,7 +84,7 @@ const BasicInfo: React.FC = () => {
         setLoading(true);
         setOrderStatus(0);
         try {
-            const data = await http.createOrder({ payType: "alipay", productType: charge.type });
+            const data = await http.createOrder({ payType: "stripe", productType: charge.type });
             setOrderInfo(data);
         } catch (error: any) {
             console.error(error);
@@ -104,7 +104,7 @@ const BasicInfo: React.FC = () => {
             setOrderStatus(data);
 
             if (data === OrderStatus.payed) {
-                message.success("您已成功支付，当前积分已更新");
+                message.success("You have paid successfully and your current points have been updated");
             }
         } catch (error) {
             console.error(error);
@@ -127,11 +127,11 @@ const BasicInfo: React.FC = () => {
                     onClick={() => setOrderInfo(null)}
                 >
                     <LeftOutlined />
-                    重新选择套餐
+                   Reselect plan
                 </Button>
                 <div className="">
                     <div className="flex justify-center align-middle my-4">
-                        当前支持扫码方式：
+                        Currently supports QR code scanning method：
                         <AlipayCircleOutlined className="text-blue-500 text-2xl" />
                     </div>
                     <div className="flex justify-center">
@@ -141,7 +141,7 @@ const BasicInfo: React.FC = () => {
                                 width="200"
                                 height="200"
                                 src={qrcode}
-                                alt="支付二维码"
+                                alt="Pay QR code"
                             />
                         )}
                     </div>
@@ -151,7 +151,7 @@ const BasicInfo: React.FC = () => {
                         onClick={onCheckPay}
                         className="block mt-4 mx-auto"
                     >
-                        我已支付
+                       I have paid
                     </Button>
                 </div>
             </div>
@@ -163,7 +163,7 @@ const BasicInfo: React.FC = () => {
             <Alert
                 className="bg-transparent"
                 banner
-                message={<div>当前对话普通文本单次消耗1积分，图片模式单次消耗8积分</div>}
+                message={<div>The normal text of the current conversation consumes 1 point, and the picture mode consumes 8 points.</div>}
             />
 
             <div className={classNames("mt-4 mb-8", isMobile && "h-[20rem]")}>
@@ -189,7 +189,7 @@ const BasicInfo: React.FC = () => {
                                 )}
                             >
                                 <CheckCircleOutlined className="text-green-500 mr-1" />
-                                立得<span className="font-bold"> {charge.count} </span>积分
+                               <span className="font-bold"> {charge.count} </span>Integral
                             </div>
                             {charge.descs.map((desc) => (
                                 <div
@@ -204,7 +204,7 @@ const BasicInfo: React.FC = () => {
                                 </div>
                             ))}
                             <div className="my-4 text-red-500 text-center">
-                                ￥<span className="font-bold text-2xl">{charge.price}</span>
+                                 ₹<span className="font-bold text-2xl">{charge.price}</span>
                             </div>
                             <Button
                                 className="w-full rounded"
@@ -212,7 +212,7 @@ const BasicInfo: React.FC = () => {
                                 loading={loading}
                                 onClick={() => onBuy(charge)}
                             >
-                                立即购买
+                                Buy it now
                             </Button>
                         </div>
                     ))}
@@ -220,7 +220,7 @@ const BasicInfo: React.FC = () => {
                 {isMobile && (
                     <p className="text-gray-500 text-center">
                         <ArrowDownOutlined className="animate-bounce mr-1" />
-                        下滑以查看更多套餐
+                        Scroll down to see more packages
                     </p>
                 )}
             </div>

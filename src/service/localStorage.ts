@@ -1,6 +1,3 @@
-/**
- * 由ChatGPT实现的localStorage的封装
- */
 
 interface LocalStorage<T> {
     set: (key: string, value: T) => void;

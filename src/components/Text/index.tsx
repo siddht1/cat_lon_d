@@ -19,7 +19,7 @@ function highlightBlock(str: string, lang?: string) {
         <pre class="code-block-wrapper">
             <div class="code-block-header">
                 <span class="code-block-header__lang">${lang}</span>
-                <span class="code-block-header__copy" id="copy-code">复制代码</span>
+                <span class="code-block-header__copy" id="copy-code">Copy code</span>
             </div>
             <code class="hljs code-block-body ${lang}">${str}</code>
         </pre>
@@ -54,7 +54,7 @@ const Text: React.FC<Props> = ({ loading, inversion, text, error }) => {
             const code = target.parentElement?.nextElementSibling?.textContent;
             if (code) {
                 await copyToClipboard(code);
-                message.success("代码已复制到剪贴板");
+                message.success("Code copied to clipboard");
             }
         }
     };
